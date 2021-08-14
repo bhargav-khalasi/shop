@@ -1,0 +1,17 @@
+extends ../layouts/main-layout 
+
+block styles 
+    link(rel="stylesheet" href="/css/cart.css")
+
+block content 
+    if orders.length > 0
+      ul.cart__item-list 
+        each order in orders 
+          li.cart__item 
+            h1 #{order.id} 
+            ul.cart__item-list
+              each product in order.products
+                li.cart__item 
+                  h3 #{product.title} (#{product.orderItem.quantity})
+    else 
+        h1 No Products in Cart !
